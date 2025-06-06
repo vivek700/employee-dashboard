@@ -3,11 +3,6 @@
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
 	let { form }: PageProps = $props();
-	$effect(() => {
-		if (form?.success) {
-			console.log('success');
-		}
-	});
 </script>
 
 <main class=" flex h-screen w-full flex-col items-center justify-center">
