@@ -3,5 +3,7 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 </script>
 
-<NavBar />
-{@render children()}
+<div class="flex">
+	<NavBar />
+	{@render children()}
+</div>
