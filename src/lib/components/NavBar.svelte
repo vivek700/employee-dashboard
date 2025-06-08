@@ -1,19 +1,20 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
-	import { House, Layers, Users } from 'lucide-svelte';
+	import { House, Layers, Power, PowerIcon, Users } from 'lucide-svelte';
 </script>
 
-<nav class="h-screen max-w-2xs bg-gray-700 p-2">
-	<section class="flex h-36 items-end rounded-md bg-[#9A6532] p-3">
-		<h1 class="font-serif text-3xl">Apollonia Dental <br /> Practice</h1>
-	</section>
-	<ul class="mt-2 space-y-2">
+<nav class="flex h-screen max-w-2xs flex-col bg-gray-700 p-2">
+	<div class="flex h-36 items-end rounded-md bg-[#9A6532] p-3">
+		<h1 class="font-serif text-2xl">Apollonia Dental <br /> Practice</h1>
+	</div>
+	<ul class="mt-3 space-y-2 text-sm">
 		<li
 			class="rounded-md bg-gray-600 hover:bg-gray-800"
 			class:bg-gray-800={page.url.pathname === '/dashboard'}
 		>
 			<a href="/dashboard" class="link">
-				<House />
+				<House size={20} />
 				Home</a
 			>
 		</li>
@@ -22,7 +23,7 @@
 			class:bg-gray-800={page.url.pathname === '/dashboard/employees'}
 		>
 			<a href="/dashboard/employees" class="link">
-				<Users />
+				<Users size={20} />
 				Employees</a
 			>
 		</li>
@@ -31,19 +32,25 @@
 			class:bg-gray-800={page.url.pathname === '/dashboard/departments'}
 		>
 			<a href="/dashboard/departments" class="link">
-				<Layers />
+				<Layers size={20} />
 				Departments</a
 			>
 		</li>
 	</ul>
-	<section class="mb-auto">
-		<button> Sign Out </button>
-	</section>
+	<form method="POST" class="mt-auto h-auto w-full text-sm" use:enhance>
+		<button
+			class="flex h-[48px] cursor-pointer items-center gap-2 rounded-md bg-gray-600 px-4 hover:bg-gray-800"
+		>
+			<Power size={20} />
+			Sign Out
+		</button>
+	</form>
 </nav>
 
 <style>
 	.link {
 		display: flex;
+		place-items: center;
 		padding: 0.8rem;
 		width: 100%;
 		column-gap: 8px;
