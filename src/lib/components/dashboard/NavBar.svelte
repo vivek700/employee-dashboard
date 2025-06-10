@@ -1,17 +1,17 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
-	import { House, Layers, Power, PowerIcon, Users } from 'lucide-svelte';
+	import { House, Layers, Power, Users } from 'lucide-svelte';
 </script>
 
-<nav class="flex h-screen flex-1 flex-col bg-slate-700 p-2 md:max-w-2xs">
+<nav class="flex h-screen max-w-3xs flex-1 flex-col bg-slate-800 p-2">
 	<div class="flex h-36 items-end rounded-md bg-[#9A6532] p-3">
 		<h1 class="font-serif text-2xl">Apollonia Dental <br /> Practice</h1>
 	</div>
 	<ul class="mt-3 space-y-2 text-sm">
 		<li
-			class="rounded-md bg-slate-600 hover:bg-slate-800"
-			class:bg-slate-800={page.url.pathname === '/dashboard'}
+			class="rounded-md bg-slate-600 hover:bg-slate-900"
+			class:bg-slate-900={page.url.pathname === '/dashboard'}
 		>
 			<a href="/dashboard" class="link">
 				<House size={20} />
@@ -19,8 +19,8 @@
 			>
 		</li>
 		<li
-			class="rounded-md bg-slate-600 hover:bg-slate-800"
-			class:bg-slate-800={page.url.pathname === '/dashboard/employees'}
+			class="rounded-md bg-slate-600 hover:bg-slate-900"
+			class:bg-slate-900={page.url.pathname === '/dashboard/employees'}
 		>
 			<a href="/dashboard/employees" class="link">
 				<Users size={20} />
@@ -28,8 +28,8 @@
 			>
 		</li>
 		<li
-			class="rounded-md bg-slate-600 hover:bg-slate-800"
-			class:bg-slate-800={page.url.pathname === '/dashboard/departments'}
+			class="rounded-md bg-slate-600 hover:bg-slate-900"
+			class:bg-slate-900={page.url.pathname === '/dashboard/departments'}
 		>
 			<a href="/dashboard/departments" class="link">
 				<Layers size={20} />
@@ -39,7 +39,7 @@
 	</ul>
 	<form method="POST" class="mt-auto h-auto w-full text-sm" use:enhance>
 		<button
-			class="flex h-[45px] cursor-pointer items-center gap-2 rounded-md bg-slate-600 px-4 hover:bg-slate-800"
+			class="flex h-[45px] cursor-pointer items-center gap-2 rounded-md bg-slate-600 px-4 hover:bg-slate-900"
 		>
 			<Power size={20} />
 			Sign Out
@@ -51,8 +51,8 @@
 	.link {
 		display: flex;
 		place-items: center;
-		padding: 0.8rem;
+		padding: 0.9rem;
 		width: 100%;
-		column-gap: 8px;
+		column-gap: 9px;
 	}
 </style>

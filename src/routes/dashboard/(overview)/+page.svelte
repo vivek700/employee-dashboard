@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
 	import Card from '$lib/components/dashboard/Card.svelte';
+	import EmployeesCard from '$lib/components/dashboard/EmployeesCard.svelte';
+	import DepartmentsCard from '$lib/components/dashboard/DepartmentsCard.svelte';
 	let { data }: PageProps = $props();
 	// $effect(() => {
 	// 	console.log(data.employees);
@@ -14,5 +16,9 @@
 			<Card title="Total Employees" value={10} type="Users" />
 			<Card title="Total Departments" value={5} type="Departments" />
 		</div>
+		<h2 class="py-5 font-serif text-3xl">Employees</h2>
+		<EmployeesCard />
+		<h2 class="py-5 font-serif text-3xl">Departments</h2>
+		<DepartmentsCard />
 	</section>
 </div>

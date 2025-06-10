@@ -4,7 +4,7 @@
 	let { title, value, type } = $props();
 </script>
 
-<div class=" flex-auto rounded-md bg-slate-700 p-2">
+<div class=" flex-auto rounded-md bg-slate-800 p-2">
 	<div class="flex gap-2 p-4">
 		{#if type === 'Users'}
 			<Users size={20} />
