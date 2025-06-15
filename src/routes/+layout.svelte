@@ -8,7 +8,7 @@
 
 <style>
 	:global(body) {
-		background-color: hsl(0, 0%, 7%);
+		background-color: hsl(222.2,47.4%,11.2%);
 		color: hsl(0, 0%, 100%);
 	}
 </style>

@@ -1,1 +1,12 @@
-<h1>this is employee page</h1>
+<h3>Employees</h3>
+<div>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Department</th>
+			</tr>
+		</thead>
+	</table>
+</div>

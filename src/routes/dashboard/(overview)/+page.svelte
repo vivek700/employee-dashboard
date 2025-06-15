@@ -16,9 +16,9 @@
 			<Card title="Total Employees" value={10} type="Users" />
 			<Card title="Total Departments" value={5} type="Departments" />
 		</div>
-		<h2 class="py-5 font-serif text-3xl">Employees</h2>
+		<h2 class="py-5 font-serif text-3xl">Recent Employees</h2>
 		<EmployeesCard />
-		<h2 class="py-5 font-serif text-3xl">Departments</h2>
+		<h2 class="py-5 font-serif text-3xl">Department Overview</h2>
 		<DepartmentsCard />
 	</section>
 </div>
