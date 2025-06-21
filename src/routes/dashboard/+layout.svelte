@@ -5,5 +5,7 @@
 
 <div class="flex">
 	<NavBar />
-	{@render children()}
+	<main class="flex-1">
+		{@render children()}
+	</main>
 </div>
