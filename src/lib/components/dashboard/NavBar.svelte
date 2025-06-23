@@ -51,7 +51,7 @@
 	.link {
 		display: flex;
 		place-items: center;
-		padding: 0.9rem;
+		padding: 0.6rem;
 		width: 100%;
 		column-gap: 9px;
 	}

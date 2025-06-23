@@ -7,15 +7,15 @@
 	<div>
 		<!-- Employee Name -->
 		<div>
-			<label for="firstName">First Name: </label>
-			<input name="firstName" id="firstName" type="text" placeholder="Enter first name" required />
+			<label for="firstname">First Name: </label>
+			<input name="firstname" id="firstname" type="text" placeholder="Enter first name" required />
 		</div>
 		<div>
-			<label for="lastName">Last Name: </label>
+			<label for="lastname">Last Name: </label>
 			<input
 				class="text-black"
-				name="lastName"
-				id="lastName"
+				name="lastname"
+				id="lastname"
 				type="text"
 				placeholder="Enter last name"
 				required
