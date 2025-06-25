@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Layers, Users } from 'lucide-svelte';
 
-	let { title, value, type } = $props();
+	let { title, value = 0, type } = $props();
 </script>
 
 <div class=" flex-auto rounded-md bg-slate-800 p-2">

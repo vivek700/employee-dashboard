@@ -1,3 +1,18 @@
-<div class=" flex-auto rounded-md bg-slate-800 p-4">
-	<p class="rounded-md bg-slate-600 px-4 py-8 text-center text-2xl"></p>
+<script lang="ts">
+	let { employees } = $props();
+	console.log(employees);
+</script>
+
+<div class=" flex-auto rounded-md bg-slate-800 px-6 py-4">
+	<ul>
+		{#each employees as employee}
+			<li class="flex items-center justify-between border-b border-gray-500 py-2 last:border-none">
+				<div>
+					<p>{employee.firstname} {employee.lastname}</p>
+					<p class="text-gray-300">{employee.email}</p>
+				</div>
+				<p>{employee.department}</p>
+			</li>
+		{/each}
+	</ul>
 </div>
