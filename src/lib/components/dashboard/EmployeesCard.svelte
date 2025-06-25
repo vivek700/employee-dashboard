@@ -9,7 +9,7 @@
 			<li class="flex items-center justify-between border-b border-gray-500 py-2 last:border-none">
 				<div>
 					<p>{employee.firstname} {employee.lastname}</p>
-					<p class="text-gray-300">{employee.email}</p>
+					<p class="text-gray-400">{employee.email}</p>
 				</div>
 				<p>{employee.department}</p>
 			</li>
