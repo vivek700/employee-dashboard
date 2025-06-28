@@ -1,5 +1,6 @@
 import { redirect } from "@sveltejs/kit"
 import type { Actions } from "./$types"
+import { API_URL } from "$env/static/private"
 
 export const actions = {
   add: async ({ request }) => {
@@ -9,7 +10,7 @@ export const actions = {
     const birthdate = data.get('birthdate')
     const email = data.get('email')
     const department = data.get('department')
-    const res = await fetch("http://localhost:3000/employee", {
+    const res = await fetch(`${API_URL}/employee`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
