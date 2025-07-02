@@ -4,9 +4,6 @@
 	import EmployeesCard from '$lib/components/dashboard/EmployeesCard.svelte';
 	import DepartmentsCard from '$lib/components/dashboard/DepartmentsCard.svelte';
 	let { data }: PageProps = $props();
-	$effect(() => {
-		console.log(data);
-	});
 </script>
 
 <div class="flex-1">

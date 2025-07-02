@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
+	import type { PageProps } from './$types';
+	let { data }: PageProps = $props();
 </script>
 
 <form action="?/add" method="POST" use:enhance>
@@ -36,7 +38,9 @@
 			<label for="department">Department:</label>
 			<select class="text-black" name="department" id="department" required>
 				<option value="">Select Department</option>
-				<option value="Webdev">Web Development</option>
+				{#each data?.departments as department}
+					<option value={`${department?.name}`}>{department.name}</option>
+				{/each}
 			</select>
 		</div>
 		<button type="submit" class="h-10 w-xs bg-blue-600">Submit Employee Details</button>

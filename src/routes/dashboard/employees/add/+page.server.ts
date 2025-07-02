@@ -1,6 +1,14 @@
 import { redirect } from "@sveltejs/kit"
-import type { Actions } from "./$types"
+import type { Actions, PageServerLoad } from "./$types"
 import { API_URL } from "$env/static/private"
+import { fetchDepartments } from "$lib/data"
+
+
+export const load: PageServerLoad = async () => {
+  return {
+    departments: await fetchDepartments()
+  }
+}
 
 export const actions = {
   add: async ({ request }) => {
@@ -17,7 +25,6 @@ export const actions = {
       },
       body: JSON.stringify({ firstname, lastname, birthdate, email, department })
     })
-    console.log(await res.json())
 
     redirect(303, "/dashboard/employees")
   }

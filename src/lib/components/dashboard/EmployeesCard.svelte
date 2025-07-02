@@ -1,6 +1,5 @@
 <script lang="ts">
 	let { employees } = $props();
-	console.log(employees);
 </script>
 
 <div class=" flex-auto rounded-md bg-slate-800 px-6 py-4">
