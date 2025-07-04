@@ -46,9 +46,3 @@
 		<button type="submit" class="h-10 w-xs bg-blue-600">Submit Employee Details</button>
 	</div>
 </form>
-
-<style>
-	input {
-		color: black;
-	}
-</style>

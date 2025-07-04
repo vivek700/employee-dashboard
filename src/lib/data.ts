@@ -14,3 +14,15 @@ export async function fetchEmployees() {
 	const data = await res.json()
 	return data.employees
 }
+
+export async function createDepartment(departmentName: string): Promise<boolean> {
+	const res = await fetch(`${API_URL}/department`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ name: departmentName })
+	})
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return true
+}
