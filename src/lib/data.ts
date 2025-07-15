@@ -1,5 +1,6 @@
 import { API_URL } from "$env/static/private"
 import { error } from '@sveltejs/kit'
+import type { Employee } from "./types"
 
 export async function fetchDepartments() {
 	const res = await fetch(`${API_URL}/department`)
@@ -25,4 +26,17 @@ export async function createDepartment(departmentName: string): Promise<boolean>
 	})
 	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
 	return true
+}
+
+export async function addEmployee(employee: Employee) {
+	const res = await fetch(`${API_URL}/employee`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(employee)
+	})
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return true
+
 }

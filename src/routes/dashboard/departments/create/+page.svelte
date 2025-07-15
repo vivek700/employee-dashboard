@@ -19,10 +19,9 @@
 		}}
 		class="flex h-full w-full flex-col"
 	>
-		<div class="p-4">
+		<div class="ml-5 p-2">
 			<label for="department">Department Name: </label>
 			<input
-				class="my-3"
 				type="text"
 				id="department"
 				name="department"

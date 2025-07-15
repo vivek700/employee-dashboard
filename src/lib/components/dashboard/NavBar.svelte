@@ -4,7 +4,7 @@
 	import { House, Layers, Power, Users } from 'lucide-svelte';
 </script>
 
-<nav class="flex h-screen max-w-3xs flex-1 flex-col bg-[#1e293b] p-2">
+<nav class="fixed flex h-screen w-3xs flex-1 flex-col bg-[#1e293b] p-2">
 	<div class="flex h-36 items-end rounded-md bg-[#9A6532] p-3">
 		<h1 class="font-serif text-2xl">Apollonia Dental <br /> Practice</h1>
 	</div>

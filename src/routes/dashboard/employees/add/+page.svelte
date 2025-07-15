@@ -2,11 +2,23 @@
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
+	let isDisabled = $state(false);
 </script>
 
-<form action="?/add" method="POST" use:enhance>
-	<h2>Employee Details</h2>
-	<div>
+<form
+	action="?/add"
+	method="POST"
+	use:enhance={() => {
+		isDisabled = true;
+		return async ({ update }) => {
+			await update();
+			isDisabled = false;
+		};
+	}}
+	class="ml-5 p-2"
+>
+	<h2 class="text-lg">Employee Details</h2>
+	<div class="flex flex-col pt-3">
 		<!-- Employee Name -->
 		<div>
 			<label for="firstname">First Name: </label>
@@ -26,7 +38,7 @@
 		<!-- Birthdate -->
 		<div>
 			<label for="birthdate">Birth Date:</label>
-			<input type="date" name="birthdate" id="birthdate" required />
+			<input type="date" name="birthdate" id="birthdate" value="1999-01-01" required />
 		</div>
 		<!-- Email -->
 		<div>
@@ -43,6 +55,13 @@
 				{/each}
 			</select>
 		</div>
-		<button type="submit" class="h-10 w-xs bg-blue-600">Submit Employee Details</button>
+		<button
+			disabled={isDisabled}
+			class:cursor-not-allowed={isDisabled}
+			class:cursor-pointer={!isDisabled}
+			type="submit"
+			class="mt-2 h-10 w-xs cursor-pointer self-center rounded-md bg-blue-600"
+			>Submit Employee Details</button
+		>
 	</div>
 </form>

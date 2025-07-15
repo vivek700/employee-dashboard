@@ -5,7 +5,7 @@
 
 <div class="flex">
 	<NavBar />
-	<main class="flex-1">
+	<main class="ml-60 flex-1">
 		{@render children()}
 	</main>
 </div>
