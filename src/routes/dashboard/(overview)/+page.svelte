@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex-1">
-	<section class="mx-auto w-11/12 pt-7">
+	<section class="mx-auto w-11/12 py-7">
 		<h1 class="font-serif text-3xl">Dashboard</h1>
 		<div class="flex justify-between gap-10 pt-4">
 			<Card title="Total Employees" value={data?.employees?.length} type="Users" />

@@ -8,8 +8,8 @@
 </script>
 
 <!-- <AddDepartmentButton /> -->
-<div class="ml-5">
-	<h2 class="text-xl">Departments</h2>
+<div class="ml-5 py-3">
+	<h2 class="px-4 pb-4 text-2xl">Departments</h2>
 	<div class="rounded-md bg-slate-800 px-4 py-2">
 		<ul>
 			{#each data.departments as department}
