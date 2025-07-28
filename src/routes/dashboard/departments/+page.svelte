@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import AddDepartmentButton from '$lib/components/departments/AddDepartmentButton.svelte';
+	import { Pencil, Trash } from 'lucide-svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
 	$effect(() => {
@@ -7,14 +9,30 @@
 	});
 </script>
 
-<!-- <AddDepartmentButton /> -->
-<div class="ml-5 py-3">
-	<h2 class="px-4 pb-4 text-2xl">Departments</h2>
-	<div class="rounded-md bg-slate-800 px-4 py-2">
+<div class="ml-5 px-3 pt-8">
+	<div class="flex items-center gap-x-8 pb-5">
+		<h2 class="text-2xl">Departments</h2>
+		<AddDepartmentButton />
+	</div>
+	<div class="rounded-md bg-slate-800 p-4">
 		<ul>
 			{#each data.departments as department}
-				<li class="mb-1.5 cursor-pointer rounded-md px-2 py-1.5 capitalize hover:bg-slate-600">
-					{department.name}
+				<li
+					class="flex items-center justify-between border-b border-slate-500 bg-slate-700/50 px-4 py-2 capitalize first:rounded-t-md last:rounded-b-md last:border-none"
+				>
+					{department?.name}
+					<form method="POST" class="flex gap-x-3" use:enhance>
+						<a
+							href={`departments/${department?._id}/edit`}
+							class="cursor-pointer rounded-md bg-slate-600 p-2"
+						>
+							<Pencil size={20} />
+						</a>
+						<input type="hidden" name="departmentName" value={department?.name} />
+						<button formaction="?/delete" class="cursor-pointer rounded-md bg-slate-600 p-2">
+							<Trash size={20} />
+						</button>
+					</form>
 				</li>
 			{/each}
 		</ul>

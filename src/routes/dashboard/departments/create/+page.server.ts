@@ -1,14 +1,13 @@
 import { createDepartment } from "$lib/data"
-import type { Actions } from "@sveltejs/kit"
+import { redirect, type Actions } from "@sveltejs/kit"
 
 export const actions = {
   create: async (event) => {
     const data = await event.request.formData()
     const name = data.get('department') as string
-
-    return {
-      success: await createDepartment(name)
-
+    const res = await createDepartment(name)
+    if (res) {
+      redirect(303, "/dashboard/departments")
     }
   }
 } satisfies Actions

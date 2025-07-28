@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { PageProps } from './$types';
-	let { form }: PageProps = $props();
 	let isDisabled = $state(false);
 </script>
 
@@ -19,7 +17,7 @@
 		}}
 		class="flex h-full w-full flex-col"
 	>
-		<div class="ml-5 p-2">
+		<div class="ml-5 p-8 pb-2">
 			<label for="department">Department Name: </label>
 			<input
 				type="text"

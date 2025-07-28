@@ -28,6 +28,19 @@ export async function createDepartment(departmentName: string): Promise<boolean>
 	return true
 }
 
+export async function deleteDepartment(name: string) {
+
+	const res = await fetch(`${API_URL}/department`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ name: name })
+	})
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return true
+}
+
 export async function addEmployee(employee: Employee) {
 	const res = await fetch(`${API_URL}/employee`, {
 		method: 'POST',
