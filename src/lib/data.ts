@@ -9,6 +9,14 @@ export async function fetchDepartments() {
 
 }
 
+export async function fetchDepartment(id: string) {
+	const res = await fetch(`${API_URL}/department/${id}`)
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return await res.json()
+
+}
+
+
 export async function fetchEmployees() {
 	const res = await fetch(`${API_URL}/employee`)
 	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
@@ -26,6 +34,19 @@ export async function createDepartment(departmentName: string): Promise<boolean>
 	})
 	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
 	return true
+}
+
+export async function updateDepartment(oldName: string, newName: string) {
+	const res = await fetch(`${API_URL}/department`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ oldName: oldName, newName: newName })
+	})
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return true
+
 }
 
 export async function deleteDepartment(name: string) {

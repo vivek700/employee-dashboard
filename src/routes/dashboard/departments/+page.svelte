@@ -23,14 +23,20 @@
 					{department?.name}
 					<form method="POST" class="flex gap-x-3" use:enhance>
 						<a
+							title="Update"
 							href={`departments/${department?._id}/edit`}
 							class="cursor-pointer rounded-md bg-slate-600 p-2"
 						>
 							<Pencil size={20} />
 						</a>
 						<input type="hidden" name="departmentName" value={department?.name} />
-						<button formaction="?/delete" class="cursor-pointer rounded-md bg-slate-600 p-2">
-							<Trash size={20} />
+						<button
+							aria-label="Delete"
+							title="Delete"
+							formaction="?/delete"
+							class="cursor-pointer rounded-md bg-slate-600 p-2"
+						>
+							<Trash size={20} aria-hidden="true" />
 						</button>
 					</form>
 				</li>
