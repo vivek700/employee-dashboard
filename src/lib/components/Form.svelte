@@ -19,7 +19,7 @@
 		class="flex h-full w-full flex-col"
 	>
 		<div class="ml-5 p-8 pb-2">
-			<label for="department">Department Name: </label>
+			<label for="department" class="text-xl">Department Name: </label>
 			<input type="hidden" name="oldname" {value} />
 			<input
 				{value}

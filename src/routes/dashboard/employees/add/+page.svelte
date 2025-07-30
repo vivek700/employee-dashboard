@@ -17,8 +17,8 @@
 	}}
 	class="ml-5 p-2"
 >
-	<h2 class="text-lg">Employee Details</h2>
-	<div class="flex flex-col pt-3">
+	<h2 class="py-4 text-2xl">Employee Details</h2>
+	<div class="flex flex-col p-3">
 		<!-- Employee Name -->
 		<div>
 			<label for="firstname">First Name: </label>

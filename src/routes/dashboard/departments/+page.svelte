@@ -23,7 +23,7 @@
 					{department?.name}
 					<form method="POST" class="flex gap-x-3" use:enhance>
 						<a
-							title="Update"
+							title="update"
 							href={`departments/${department?._id}/edit`}
 							class="cursor-pointer rounded-md bg-slate-600 p-2"
 						>
@@ -32,7 +32,7 @@
 						<input type="hidden" name="departmentName" value={department?.name} />
 						<button
 							aria-label="Delete"
-							title="Delete"
+							title="delete"
 							formaction="?/delete"
 							class="cursor-pointer rounded-md bg-slate-600 p-2"
 						>

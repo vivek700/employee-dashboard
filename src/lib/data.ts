@@ -74,3 +74,15 @@ export async function addEmployee(employee: Employee) {
 	return true
 
 }
+
+export async function deleteEmployee(id: string) {
+	const res = await fetch(`${API_URL}/employee`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ id: id })
+	})
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return true
+}
