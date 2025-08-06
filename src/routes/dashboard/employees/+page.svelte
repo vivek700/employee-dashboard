@@ -47,19 +47,18 @@
 							</p>
 						</td>
 						<td>
-							<form
-								class="flex justify-end gap-x-2 pr-4"
-								method="POST"
-								action="?/update"
-								use:enhance
-							>
+							<form class="flex justify-end gap-x-2 pr-4" method="POST" use:enhance>
 								<input type="hidden" name="id" value={employee?._id} />
-								<button type="submit" title="update" class="rounded bg-slate-600 p-1.5">
+								<a
+									href={`employees/${employee._id}/edit`}
+									title="update"
+									class="rounded bg-slate-600 p-1.5"
+								>
 									<Pencil size={20} />
-								</button>
+								</a>
 								<button
 									type="submit"
-									class="rounded bg-slate-600 p-1.5"
+									class="cursor-pointer rounded bg-slate-600 p-1.5"
 									title="delete"
 									formaction="?/delete"
 								>

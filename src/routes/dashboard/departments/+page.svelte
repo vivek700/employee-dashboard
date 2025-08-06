@@ -31,6 +31,7 @@
 						</a>
 						<input type="hidden" name="departmentName" value={department?.name} />
 						<button
+							type="submit"
 							aria-label="Delete"
 							title="delete"
 							formaction="?/delete"

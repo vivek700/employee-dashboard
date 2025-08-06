@@ -16,6 +16,11 @@ export async function fetchDepartment(id: string) {
 
 }
 
+export async function fetchEmployee(id: string) {
+	const res = await fetch(`${API_URL}/employee/${id}`)
+	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+	return await res.json()
+}
 
 export async function fetchEmployees() {
 	const res = await fetch(`${API_URL}/employee`)
