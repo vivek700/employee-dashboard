@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Form from '$lib/components/employees/Form.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -7,4 +8,4 @@
 	});
 </script>
 
-<h1>this is a edit page</h1>
+<Form {data} action="update" buttonText="Update" />

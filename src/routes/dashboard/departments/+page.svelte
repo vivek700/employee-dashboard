@@ -9,12 +9,12 @@
 	});
 </script>
 
-<div class="ml-5 px-3 pt-8">
+<div class="ml-5 px-2 pt-8">
 	<div class="flex items-center gap-x-8 pb-5">
 		<h2 class="text-2xl">Departments</h2>
 		<AddDepartmentButton />
 	</div>
-	<div class="rounded-md bg-slate-800 p-4">
+	<div class="rounded-md bg-slate-800 p-3">
 		<ul>
 			{#each data.departments as department}
 				<li
