@@ -69,7 +69,7 @@
 		<!-- Department -->
 		<div>
 			<label for="department">Department:</label>
-			<select class="text-black" name="department" id="department" required>
+			<select class="text-black" name="department" id="department" >
 				<option value={data?.employee?.department || ''}
 					>{data?.employee?.department || '--Select Department--'}</option
 				>
