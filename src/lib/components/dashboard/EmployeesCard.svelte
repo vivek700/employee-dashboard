@@ -10,7 +10,7 @@
 					<p>{employee.firstname} {employee.lastname}</p>
 					<p class="text-gray-400">{employee.email}</p>
 				</div>
-				<p>{employee.department}</p>
+				<p>{employee.departments}</p>
 			</li>
 		{/each}
 	</ul>

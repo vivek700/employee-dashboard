@@ -6,8 +6,6 @@ export const actions = {
     const data = await event.request.formData()
     const name = data.get('department') as string
     const res = await createDepartment(name)
-    if (res) {
-      redirect(303, "/dashboard/departments")
-    }
+    if (res) return { success: true }
   }
 } satisfies Actions

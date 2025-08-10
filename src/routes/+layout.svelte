@@ -23,8 +23,7 @@
 			color: var(--text-color);
 			border-radius: 10px;
 			width: 100%;
-			margin-block-start: 0.3rem;
-			margin-block-end: 1rem;
+			margin-block: 0.3rem;
 		}
 		input[type='date']::-webkit-calendar-picker-indicator {
 			filter: invert(1);

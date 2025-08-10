@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
 	let isDisabled = $state(false);
-	let { data, action, buttonText = 'Submit' } = $props();
+	let { data, action, buttonText = 'Submit', status = false } = $props();
 </script>
 
 <form
@@ -23,6 +23,9 @@
 		<div>
 			<label for="firstname">First Name: </label>
 			<input
+				onclick={() => {
+					status = false;
+				}}
 				name="firstname"
 				id="firstname"
 				type="text"
@@ -68,22 +71,30 @@
 		</div>
 		<!-- Department -->
 		<div>
-			<label for="department">Department:</label>
-			<select class="text-black" name="department" id="department" >
+			<label for="departments">Departments:</label>
+			<p class="mt-1 text-sm text-gray-500">Hold down Ctrl to select multiple options.</p>
+			<select class="text-black" name="departments" id="departments" multiple>
 				<option value={data?.employee?.department || ''}
 					>{data?.employee?.department || '--Select Department--'}</option
 				>
 				{#each data?.departments as department}
-					<option value={`${department?.name}`}>{department.name}</option>
+					<option
+						value={`${department?.name}`}
+						selected={data?.employee?.department?.includes(department?.name)}
+						>{department.name}</option
+					>
 				{/each}
 			</select>
+			<p class=" absolute text-sm text-green-600" class:hidden={!status}>
+				Employee added successfully!
+			</p>
 		</div>
 		<button
 			disabled={isDisabled}
 			class:cursor-not-allowed={isDisabled}
 			class:cursor-pointer={!isDisabled}
 			type="submit"
-			class="mt-2 h-10 w-xs cursor-pointer self-center rounded-md bg-blue-600"
+			class="mt-8 h-10 w-xs cursor-pointer self-center rounded-md bg-blue-600"
 			>{buttonText} Employee Details</button
 		>
 	</div>

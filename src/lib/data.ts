@@ -80,7 +80,6 @@ export async function addEmployee(employee: Employee) {
 }
 export async function updateEmployee(id: string, employee: Employee) {
 
-	console.log({ ...employee })
 	const res = await fetch(`${API_URL}/employee`, {
 		method: "PUT",
 		headers: {

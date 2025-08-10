@@ -3,5 +3,5 @@ export type Employee = {
 	lastname: string
 	birthdate: string
 	email: string
-	department: string
+	departments: string[]
 }

@@ -13,10 +13,17 @@ export const load: PageServerLoad = async () => {
 export const actions = {
   add: async ({ request }) => {
     const data = await request.formData()
-    const employee = Object.fromEntries(data) as Employee
-    const res = await addEmployee(employee)
-    if (res) {
-      redirect(303, "/dashboard/employees")
+    const departments = data.getAll('departments') as string[]
+    const employee = {
+      firstname: data.get('firstname') as string,
+      lastname: data.get('lastname') as string,
+      birthdate: data.get('birthdate') as string,
+      email: data.get('email') as string,
+      departments: departments
+
     }
+    const res = await addEmployee(employee)
+    if (res) return { success: true }
+
   }
 } satisfies Actions

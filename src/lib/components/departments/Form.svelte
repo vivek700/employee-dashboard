@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	let isDisabled = $state(false);
-	let { action, value = '' } = $props();
+	let { action, value = '', status = false } = $props();
 </script>
 
 <div>
@@ -18,10 +18,13 @@
 		}}
 		class="flex h-full w-full flex-col"
 	>
-		<div class="ml-5 p-8 pb-2">
+		<div class="ml-5 p-8">
 			<label for="department" class="text-xl">Department Name: </label>
 			<input type="hidden" name="oldname" {value} />
 			<input
+				onclick={() => {
+					status = false;
+				}}
 				{value}
 				type="text"
 				id="department"
@@ -29,6 +32,9 @@
 				required
 				placeholder="Enter department name"
 			/>
+			<p class=" absolute text-sm text-green-600" class:hidden={!status}>
+				Department created successfully!
+			</p>
 		</div>
 		<button
 			disabled={isDisabled}

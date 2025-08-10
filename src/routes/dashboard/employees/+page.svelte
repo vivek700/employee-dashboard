@@ -25,7 +25,7 @@
 					<th scope="col" class="relative py-4"><span class="sr-only"> edit </span></th>
 				</tr>
 			</thead>
-			<tbody class="bg-slate-700">
+			<tbody class="bg-slate-700/50">
 				{#each data?.employees as employee}
 					<tr
 						class="w-full border-b border-b-slate-500 last:border-none [&:first-child>td:first-child]:rounded-tl-md [&:first-child>td:last-child]:rounded-tr-md [&:last-child>td:first-child]:rounded-bl-md [&:last-child>td:last-child]:rounded-br-md"
@@ -43,7 +43,7 @@
 						</td>
 						<td class="py-3 pr-4 whitespace-nowrap">
 							<p>
-								{employee.department}
+								{employee?.departments}
 							</p>
 						</td>
 						<td>
