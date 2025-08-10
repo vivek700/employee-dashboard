@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
 	let isDisabled = $state(false);
-  let {data, action, buttonText = "Submit"} = $props()
+	let { data, action, buttonText = 'Submit' } = $props();
 </script>
 
 <form
@@ -22,12 +22,19 @@
 		<!-- Employee Name -->
 		<div>
 			<label for="firstname">First Name: </label>
-			<input name="firstname" id="firstname" type="text" value={data?.employee?.firstname || ""} placeholder="Enter first name" required />
+			<input
+				name="firstname"
+				id="firstname"
+				type="text"
+				value={data?.employee?.firstname || ''}
+				placeholder="Enter first name"
+				required
+			/>
 		</div>
 		<div>
 			<label for="lastname">Last Name: </label>
 			<input
-        value={data?.employee?.lastname || ""}
+				value={data?.employee?.lastname || ''}
 				class="text-black"
 				name="lastname"
 				id="lastname"
@@ -39,18 +46,33 @@
 		<!-- Birthdate -->
 		<div>
 			<label for="birthdate">Birth Date:</label>
-			<input type="date" value={data?.employee?.birthdate || "1999-01-01"} name="birthdate" id="birthdate"  required />
+			<input
+				type="date"
+				value={data?.employee?.birthdate || '1999-01-01'}
+				name="birthdate"
+				id="birthdate"
+				required
+			/>
 		</div>
 		<!-- Email -->
 		<div>
 			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" value={data?.employee?.email || ""} placeholder="Enter email address" required />
+			<input
+				type="email"
+				id="email"
+				name="email"
+				value={data?.employee?.email || ''}
+				placeholder="Enter email address"
+				required
+			/>
 		</div>
 		<!-- Department -->
 		<div>
 			<label for="department">Department:</label>
 			<select class="text-black" name="department" id="department" required>
-				<option value={data?.employee?.department || ""} >{ data?.employee?.department || "--Select Department--"}</option>
+				<option value={data?.employee?.department || ''}
+					>{data?.employee?.department || '--Select Department--'}</option
+				>
 				{#each data?.departments as department}
 					<option value={`${department?.name}`}>{department.name}</option>
 				{/each}

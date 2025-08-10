@@ -77,7 +77,18 @@ export async function addEmployee(employee: Employee) {
 	})
 	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
 	return true
+}
+export async function updateEmployee(id: string, employee: Employee) {
 
+	console.log({ ...employee })
+	const res = await fetch(`${API_URL}/employee`, {
+		method: "PUT",
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ id: id, ...employee })
+	})
+	return true
 }
 
 export async function deleteEmployee(id: string) {
