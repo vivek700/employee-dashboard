@@ -75,8 +75,7 @@ export async function addEmployee(employee: Employee) {
 		},
 		body: JSON.stringify(employee)
 	})
-	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
-	return true
+	return res
 }
 export async function updateEmployee(id: string, employee: Employee) {
 
@@ -87,7 +86,7 @@ export async function updateEmployee(id: string, employee: Employee) {
 		},
 		body: JSON.stringify({ id: id, ...employee })
 	})
-	return true
+	return res
 }
 
 export async function deleteEmployee(id: string) {

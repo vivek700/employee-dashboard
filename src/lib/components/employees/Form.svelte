@@ -1,8 +1,20 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { PageProps } from './$types';
 	let isDisabled = $state(false);
-	let { data, action, buttonText = 'Submit', status = false } = $props();
+	let { data, action, buttonText = 'Submit', form = null } = $props();
+
+	function handleForm() {
+		form = null;
+	}
+
+	console.log(form);
+	let employeeDetails = $state({
+		firstname: data?.employee?.firstname || '',
+		lastname: data?.employee?.lastname || '',
+		birthdate: data?.employee?.birthdate || '1999-01-01',
+		email: data?.employee?.email || '',
+		departments: data?.employee?.departments || []
+	});
 </script>
 
 <form
@@ -23,13 +35,11 @@
 		<div>
 			<label for="firstname">First Name: </label>
 			<input
-				onclick={() => {
-					status = false;
-				}}
+				onclick={handleForm}
 				name="firstname"
 				id="firstname"
 				type="text"
-				value={data?.employee?.firstname || ''}
+				bind:value={employeeDetails.firstname}
 				placeholder="Enter first name"
 				required
 			/>
@@ -37,7 +47,7 @@
 		<div>
 			<label for="lastname">Last Name: </label>
 			<input
-				value={data?.employee?.lastname || ''}
+				bind:value={employeeDetails.lastname}
 				class="text-black"
 				name="lastname"
 				id="lastname"
@@ -51,7 +61,7 @@
 			<label for="birthdate">Birth Date:</label>
 			<input
 				type="date"
-				value={data?.employee?.birthdate || '1999-01-01'}
+				bind:value={employeeDetails.birthdate}
 				name="birthdate"
 				id="birthdate"
 				required
@@ -61,10 +71,11 @@
 		<div>
 			<label for="email">Email:</label>
 			<input
+				onclick={handleForm}
 				type="email"
 				id="email"
 				name="email"
-				value={data?.employee?.email || ''}
+				bind:value={employeeDetails.email}
 				placeholder="Enter email address"
 				required
 			/>
@@ -73,21 +84,25 @@
 		<div>
 			<label for="departments">Departments:</label>
 			<p class="mt-1 text-sm text-gray-500">Hold down Ctrl to select multiple options.</p>
-			<select class="text-black" name="departments" id="departments" multiple>
-				<option value={data?.employee?.department || ''}
-					>{data?.employee?.department || '--Select Department--'}</option
-				>
+			<select
+				class="text-black"
+				bind:value={employeeDetails.departments}
+				name="departments"
+				id="departments"
+				multiple
+			>
+				<option>--Select Department--</option>
 				{#each data?.departments as department}
-					<option
-						value={`${department?.name}`}
-						selected={data?.employee?.department?.includes(department?.name)}
-						>{department.name}</option
-					>
+					<option value={department?.name}>{department.name}</option>
 				{/each}
 			</select>
-			<p class=" absolute text-sm text-green-600" class:hidden={!status}>
-				Employee added successfully!
-			</p>
+			{#if form?.incorrect}
+				<p class=" absolute text-sm text-yellow-600">{form?.message}</p>
+			{:else if form?.missing}
+				<p class=" absolute text-sm text-red-600">{form?.message}</p>
+			{:else if form?.success}
+				<p class=" absolute text-sm text-green-600">{form?.message}</p>
+			{/if}
 		</div>
 		<button
 			disabled={isDisabled}

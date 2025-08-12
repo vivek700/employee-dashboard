@@ -4,4 +4,4 @@
 	let { data, form }: PageProps = $props();
 </script>
 
-<Form {data} action="add" status={form?.success} />
+<Form {data} action="add" {form} />
