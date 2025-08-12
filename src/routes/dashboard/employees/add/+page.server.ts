@@ -28,7 +28,7 @@ export const actions = {
       return fail(409, { message, incorrect: true })
     } else if (res.status === 400) {
       const message = "Enter correct details."
-      return fail(409, { message, missing: true })
+      return fail(400, { message, missing: true })
     }
     if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
     return { message: 'Employee added successfully!', success: true }

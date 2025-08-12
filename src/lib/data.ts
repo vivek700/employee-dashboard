@@ -29,7 +29,7 @@ export async function fetchEmployees() {
 	return data.employees
 }
 
-export async function createDepartment(departmentName: string): Promise<boolean> {
+export async function createDepartment(departmentName: string): Promise<Response> {
 	const res = await fetch(`${API_URL}/department`, {
 		method: 'POST',
 		headers: {
@@ -37,8 +37,7 @@ export async function createDepartment(departmentName: string): Promise<boolean>
 		},
 		body: JSON.stringify({ name: departmentName })
 	})
-	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
-	return true
+	return res
 }
 
 export async function updateDepartment(oldName: string, newName: string) {
