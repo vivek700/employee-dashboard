@@ -37,7 +37,7 @@
 					{form?.message}
 				</p>
 			{:else if form?.missing}
-				<p class="absolute text-sm text-green-600">
+				<p class="absolute text-sm text-red-600">
 					{form?.message}
 				</p>
 			{:else if form?.success}

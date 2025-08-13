@@ -1,11 +1,7 @@
 <script lang="ts">
 	import Form from '$lib/components/employees/Form.svelte';
 	import type { PageProps } from './$types';
-
-	let { data }: PageProps = $props();
-	$effect(() => {
-		console.log(data);
-	});
+	let { data, form }: PageProps = $props();
 </script>
 
-<Form {data} action="update" buttonText="Update" />
+<Form {data} action="update" buttonText="Update" {form} />

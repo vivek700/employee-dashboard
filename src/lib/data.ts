@@ -48,8 +48,7 @@ export async function updateDepartment(oldName: string, newName: string) {
 		},
 		body: JSON.stringify({ oldName: oldName, newName: newName })
 	})
-	if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
-	return true
+	return res
 
 }
 
