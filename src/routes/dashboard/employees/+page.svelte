@@ -4,10 +4,7 @@
 	import { Pencil, Trash } from 'lucide-svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
-	$effect(() => {
-		console.log(data);
-	});
-</script>
+	</script>
 
 <div class="ml-5 px-2 py-6">
 	<div class="flex items-center gap-x-6 pb-6">
