@@ -10,7 +10,11 @@
 					<p>{employee.firstname} {employee.lastname}</p>
 					<p class="text-gray-400">{employee.email}</p>
 				</div>
-				<p>{employee.departments}</p>
+				{#if employee.departments.length > 1}
+					<p>{employee.departments[0]}, ...</p>
+				{:else}
+					<p>{employee.departments[0]}</p>
+				{/if}
 			</li>
 		{/each}
 	</ul>

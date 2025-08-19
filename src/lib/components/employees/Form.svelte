@@ -27,9 +27,9 @@
 			isDisabled = false;
 		};
 	}}
-	class="ml-5 p-2"
+	class="p-2 md:ml-5"
 >
-	<h2 class="py-4 text-2xl">Employee Details</h2>
+	<h2 class="px-1 py-4 text-2xl">Employee Details</h2>
 	<div class="flex flex-col p-3">
 		<!-- Employee Name -->
 		<div>
