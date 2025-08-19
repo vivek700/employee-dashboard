@@ -9,7 +9,7 @@
 <div class="flex-1">
 	<section class="mx-auto w-11/12 py-7">
 		<h1 class="font-serif text-3xl">Dashboard</h1>
-		<div class="flex justify-between gap-5 pt-4 md:gap-10">
+		<div class="flex justify-between gap-4 pt-4 md:gap-10">
 			<Card title="Total Employees" value={data?.employees?.length} type="Users" />
 			<Card title="Total Departments" value={data?.departments?.length} type="Departments" />
 		</div>

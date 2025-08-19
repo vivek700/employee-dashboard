@@ -5,7 +5,7 @@
 </script>
 
 <div class=" flex-auto rounded-md bg-slate-800 p-2">
-	<div class="flex gap-2 p-3">
+	<div class="flex items-center gap-2 p-3">
 		{#if type === 'Users'}
 			<Users size={20} />
 		{:else}
@@ -15,7 +15,7 @@
 			{title}
 		</h3>
 	</div>
-	<p class="rounded-md bg-slate-700 px-4 py-7 text-center text-3xl">
+	<p class="rounded-md bg-slate-900 px-4 py-7 text-center text-3xl">
 		{value}
 	</p>
 </div>

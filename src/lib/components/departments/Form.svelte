@@ -48,7 +48,7 @@
 		</div>
 		<button
 			disabled={isDisabled}
-			class=" h-10 w-xs self-center rounded-md bg-blue-500 capitalize"
+			class=" mt-4 h-10 w-xs self-center rounded-md bg-blue-500 capitalize"
 			type="submit"
 			class:cursor-not-allowed={isDisabled}
 			class:cursor-pointer={!isDisabled}>{action}</button
