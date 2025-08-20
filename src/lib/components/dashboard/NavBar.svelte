@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
+	import { authClient } from '$lib/auth-client';
 	import { House, Layers, Power, Users } from 'lucide-svelte';
 </script>
 
@@ -37,7 +38,7 @@
 			</a>
 		</li>
 		<li class="flex flex-1 md:hidden">
-			<form method="POST" class=" w-full" use:enhance>
+			<form method="POST" action="/login?/signout" class=" w-full" use:enhance>
 				<button
 					class="flex h-full w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-slate-700 p-2.5 text-sm hover:bg-slate-900"
 				>
@@ -47,7 +48,12 @@
 			</form>
 		</li>
 	</ul>
-	<form method="POST" class="mt-auto hidden h-auto w-full text-sm md:block" use:enhance>
+	<form
+		method="POST"
+		action="/login?/signout"
+		class="mt-auto hidden h-auto w-full text-sm md:block"
+		use:enhance
+	>
 		<button
 			class="flex h-[45px] cursor-pointer items-center gap-2 rounded-md bg-slate-700 px-4 hover:bg-slate-900"
 		>
