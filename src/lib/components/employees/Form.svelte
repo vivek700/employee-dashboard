@@ -7,7 +7,6 @@
 		form = null;
 	}
 
-	console.log(form);
 	let employeeDetails = $state({
 		firstname: data?.employee?.firstname || '',
 		lastname: data?.employee?.lastname || '',

@@ -2,12 +2,7 @@
 	import { ArrowRight, AtSign, KeyRound } from 'lucide-svelte';
 	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
-	import { authClient } from '$lib/auth-client';
 	let { form }: PageProps = $props();
-	const session = authClient.useSession();
-	$effect(() => {
-		console.log($session);
-	});
 </script>
 
 <main class=" flex h-dvh w-full flex-col items-center justify-center">
@@ -57,15 +52,7 @@
 				<!-- 	Log in -->
 				<!-- 	<ArrowRight class="ml-auto h-5 w-5 text-gray-50" /> -->
 				<!-- </button> -->
-				{#if $session.data}
-					<p>{$session.data.user.name}</p>
-				{/if}
 				<button
-					onclick={async () => {
-						await authClient.signIn.social({
-							provider: 'google'
-						});
-					}}
 					class="mt-5 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
 					type="button"
 				>

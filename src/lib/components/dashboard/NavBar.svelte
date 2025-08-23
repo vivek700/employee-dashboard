@@ -1,7 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
-	import { authClient } from '$lib/auth-client';
 	import { House, Layers, Power, Users } from 'lucide-svelte';
 </script>
 
