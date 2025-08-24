@@ -3,7 +3,7 @@ import { fetchDepartments, fetchEmployees } from '$lib/data'
 
 export const load: PageServerLoad = async () => {
   return {
-    employees: await fetchEmployees(),
-    departments: await fetchDepartments()
+    employees: fetchEmployees(),
+    departments: fetchDepartments()
   }
 }

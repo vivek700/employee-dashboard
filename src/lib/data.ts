@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit'
 import type { Employee } from "./types"
 
 export async function fetchDepartments() {
+
 	const res = await fetch(`${API_URL}/department`, {
 		headers: {
 			'internal-api-key': INTERNAL_API_KEY
