@@ -93,9 +93,11 @@
 				multiple
 			>
 				<option>--Select Department--</option>
-				{#each data?.departments as department}
-					<option value={department?.name}>{department.name}</option>
-				{/each}
+				{#await data.departments then departments}
+					{#each departments as department}
+						<option value={department?.name}>{department.name}</option>
+					{/each}
+				{/await}
 			</select>
 			{#if form?.incorrect}
 				<p class=" absolute text-sm text-yellow-600">{form?.message}</p>

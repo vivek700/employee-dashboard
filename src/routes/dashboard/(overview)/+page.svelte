@@ -21,13 +21,17 @@
 		</div>
 		<h2 class="py-5 font-serif text-xl md:text-3xl">Recent Employees</h2>
 		{#await data.employees}
-			<LoaderCircle class="animate-spin" />
+			<div class="flex justify-center">
+				<LoaderCircle class="animate-spin" />
+			</div>
 		{:then employees}
 			<EmployeesCard {employees} />
 		{/await}
 		<h2 class="py-5 font-serif text-xl md:text-3xl">Department Overview</h2>
 		{#await data.departments}
-			<LoaderCircle class="animate-spin" />
+			<div class="flex justify-center">
+				<LoaderCircle class="animate-spin" />
+			</div>
 		{:then departments}
 			<DepartmentsCard {departments} />
 		{/await}
