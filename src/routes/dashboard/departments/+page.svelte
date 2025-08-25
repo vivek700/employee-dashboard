@@ -15,7 +15,7 @@
 		<ul>
 			{#each data.departments as department}
 				<li
-					class="flex items-center justify-between border-b border-slate-500 bg-slate-900 px-4 py-2 capitalize first:rounded-t-md last:rounded-b-md last:border-none"
+					class="flex items-center justify-between border-b border-slate-500 bg-slate-900 px-4 py-2 text-sm capitalize first:rounded-t-md last:rounded-b-md last:border-none"
 				>
 					{department?.name}
 					<form method="POST" class="flex gap-x-3" use:enhance>

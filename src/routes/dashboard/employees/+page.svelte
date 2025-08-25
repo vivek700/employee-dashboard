@@ -4,10 +4,6 @@
 	import { Pencil, Trash } from 'lucide-svelte';
 	import type { PageProps } from './$types';
 	let { data }: PageProps = $props();
-
-	$effect(() => {
-		console.log(data);
-	});
 </script>
 
 <div class="px-1 py-6 md:ml-5 md:px-2">
@@ -18,11 +14,11 @@
 	<div class="rounded-md bg-slate-800 p-2">
 		<div class="lg:hidden">
 			{#each data?.employees as employee (employee._id)}
-				<div class="my-2 rounded-md bg-slate-900 p-2">
+				<div class="my-2 rounded-md bg-slate-900 p-2 text-sm">
 					<div class="flex items-center justify-between border-b border-gray-600 pb-2">
 						<div>
 							<h3>{employee?.firstname} {employee?.lastname}</h3>
-							<p class="text-sm text-gray-400">{employee?.email}</p>
+							<p class=" text-gray-400">{employee?.email}</p>
 						</div>
 						<div>
 							{#if employee?.departments.length > 1}

@@ -28,8 +28,8 @@
 	}}
 	class="p-2 md:ml-5"
 >
-	<h2 class="px-1 py-4 text-2xl">Employee Details</h2>
-	<div class="flex flex-col p-3">
+	<h2 class="px-1 py-4 text-xl md:text-2xl">Employee Details</h2>
+	<div class="flex flex-col p-3 text-sm">
 		<!-- Employee Name -->
 		<div>
 			<label for="firstname">First Name: </label>
@@ -82,9 +82,11 @@
 		<!-- Department -->
 		<div>
 			<label for="departments">Departments:</label>
-			<p class="mt-1 text-sm text-gray-500">Hold down Ctrl to select multiple options.</p>
+			<p class="mt-1 hidden text-xs text-gray-500 md:block">
+				Hold down Ctrl to select multiple options.
+			</p>
 			<select
-				class="text-black"
+				class="text-sm text-black"
 				bind:value={employeeDetails.departments}
 				name="departments"
 				id="departments"

@@ -5,8 +5,8 @@
 </script>
 
 <nav class="flex-1 bg-[#1e293b] p-2 md:fixed md:flex md:h-screen md:w-3xs md:flex-col">
-	<div class="flex h-36 items-end rounded-md bg-[#9A6532] p-3">
-		<h1 class="font-serif text-2xl">Apollonia Dental <br /> Practice</h1>
+	<div class="flex h-32 items-end rounded-md bg-[#9A6532] p-3 md:h-36">
+		<h1 class="font-serif text-xl md:text-2xl">Apollonia Dental <br /> Practice</h1>
 	</div>
 	<ul class="mt-3 flex justify-between gap-x-2 text-sm md:block md:space-y-2">
 		<li
