@@ -71,7 +71,6 @@ export async function updateDepartment(oldName: string, newName: string) {
 }
 
 export async function deleteDepartment(name: string) {
-
   const res = await fetch(`${API_URL}/department`, {
     method: 'DELETE',
     headers: {
@@ -96,7 +95,6 @@ export async function addEmployee(employee: Employee) {
   return res
 }
 export async function updateEmployee(id: string, employee: Employee) {
-
   const res = await fetch(`${API_URL}/employee`, {
     method: "PUT",
     headers: {
@@ -116,6 +114,18 @@ export async function deleteEmployee(id: string) {
       'internal-api-key': INTERNAL_API_KEY,
     },
     body: JSON.stringify({ id: id })
+  })
+  if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+  return true
+}
+
+export async function resetData() {
+  const res = await fetch(`${API_URL}/reset-data`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'internal-api-key': INTERNAL_API_KEY,
+    },
   })
   if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
   return true

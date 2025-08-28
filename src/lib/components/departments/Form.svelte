@@ -51,7 +51,14 @@
 			class=" mt-4 h-10 w-xs self-center rounded-md bg-blue-500 capitalize"
 			type="submit"
 			class:cursor-not-allowed={isDisabled}
-			class:cursor-pointer={!isDisabled}>{action}</button
+			class:cursor-pointer={!isDisabled}
+			class:bg-gray-500={isDisabled}
 		>
+			{#if isDisabled}
+				{action === 'create' ? 'Creating...' : 'Updating...'}
+			{:else}
+				{action === 'create' ? 'Create' : 'Update'}
+			{/if}
+		</button>
 	</form>
 </div>
