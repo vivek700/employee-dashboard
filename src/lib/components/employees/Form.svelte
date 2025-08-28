@@ -1,18 +1,19 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	let isDisabled = $state(false);
-	let { data, action, buttonText = 'Submit', form = null } = $props();
+	import { LoaderCircle } from 'lucide-svelte';
+	let isDisabled: boolean = $state(false);
+	let { employee, departments, action, form = null } = $props();
 
 	function handleForm() {
 		form = null;
 	}
 
 	let employeeDetails = $state({
-		firstname: data?.employee?.firstname || '',
-		lastname: data?.employee?.lastname || '',
-		birthdate: data?.employee?.birthdate || '1999-01-01',
-		email: data?.employee?.email || '',
-		departments: data?.employee?.departments || []
+		firstname: employee?.firstname || '',
+		lastname: employee?.lastname || '',
+		birthdate: employee?.birthdate || '1999-01-01',
+		email: employee?.email || '',
+		departments: employee?.departments || []
 	});
 </script>
 
@@ -26,9 +27,7 @@
 			isDisabled = false;
 		};
 	}}
-	class="p-2 md:ml-5"
 >
-	<h2 class="px-1 py-4 text-xl md:text-2xl">Employee Details</h2>
 	<div class="flex flex-col p-3 text-sm">
 		<!-- Employee Name -->
 		<div>
@@ -93,9 +92,11 @@
 				multiple
 			>
 				<option>--Select Department--</option>
-				{#each data?.departments as department}
-					<option value={department?.name}>{department.name}</option>
-				{/each}
+				{#await departments then departments}
+					{#each departments as department}
+						<option value={department?.name}>{department.name}</option>
+					{/each}
+				{/await}
 			</select>
 			{#if form?.incorrect}
 				<p class=" absolute text-sm text-yellow-600">{form?.message}</p>
@@ -105,13 +106,29 @@
 				<p class=" absolute text-sm text-green-600">{form?.message}</p>
 			{/if}
 		</div>
-		<button
-			disabled={isDisabled}
-			class:cursor-not-allowed={isDisabled}
-			class:cursor-pointer={!isDisabled}
-			type="submit"
-			class="mt-8 h-10 w-xs cursor-pointer self-center rounded-md bg-blue-600"
-			>{buttonText} Employee Details</button
-		>
+		{#if departments instanceof Promise || employee instanceof Promise}
+			<button
+				class="mt-8 flex h-10 w-xs cursor-not-allowed items-center justify-center self-center rounded-md bg-gray-600"
+				type="button"
+			>
+				Please wait...
+			</button>
+		{:else}
+			<button
+				disabled={isDisabled}
+				class:cursor-not-allowed={isDisabled}
+				class:cursor-pointer={!isDisabled}
+				type="submit"
+				class="mt-8 flex h-10 w-xs cursor-pointer items-center justify-center self-center rounded-md bg-blue-600"
+				class:bg-gray-500={isDisabled}
+				class:animate-pulse={isDisabled}
+			>
+				{#if isDisabled}
+					{action === 'add' ? 'Adding Employee...' : 'Updating Employee...'}
+				{:else}
+					{action === 'add' ? 'Submit Employee Details' : 'Update Employee Details'}
+				{/if}
+			</button>
+		{/if}
 	</div>
 </form>

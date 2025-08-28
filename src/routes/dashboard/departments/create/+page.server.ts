@@ -1,5 +1,5 @@
 import { createDepartment } from "$lib/data"
-import { error, fail, redirect, type Actions } from "@sveltejs/kit"
+import { error, fail, type Actions } from "@sveltejs/kit"
 
 export const actions = {
   create: async (event) => {

@@ -7,8 +7,8 @@ import type { Actions, PageServerLoad } from './$types'
 export const load: PageServerLoad = async ({ params }) => {
   const id = params.id as string
   return {
-    departments: await fetchDepartments(),
-    employee: await fetchEmployee(id)
+    departments: fetchDepartments(),
+    employee: fetchEmployee(id)
   }
 }
 

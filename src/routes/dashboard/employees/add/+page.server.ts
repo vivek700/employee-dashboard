@@ -6,7 +6,7 @@ import type { Employee } from "$lib/types"
 
 export const load: PageServerLoad = async () => {
   return {
-    departments: await fetchDepartments()
+    departments: fetchDepartments()
   }
 }
 
