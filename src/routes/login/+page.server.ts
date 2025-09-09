@@ -1,18 +1,18 @@
 import { auth } from '$lib/auth'
+import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
 
 
 export const actions = {
-  login: async () => {
-    console.log("This a guest login action")
-    const user = await auth.api.signInAnonymous()
-    console.log(user)
-    return {
-      success: true
+  signIn: async () => {
+    try {
+      const user = await auth.api.signInAnonymous()
+    } catch (err) {
+      console.log(err)
+    } finally {
+      redirect(303, "/dashboard")
     }
-  },
-  signout: async (event) => {
 
-    console.log("SignOut action")
-  }
+  },
+
 } satisfies Actions

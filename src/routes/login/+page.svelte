@@ -12,7 +12,7 @@
 		<section class="mt-4" aria-labelledby="login-heading">
 			<form
 				method="POST"
-				action="?/login"
+				action="?/signIn"
 				use:enhance
 				class=" rounded-md bg-[#2B4958] px-8 pt-8 pb-10"
 			>

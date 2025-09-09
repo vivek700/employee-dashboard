@@ -14,6 +14,7 @@ export const actions = {
     const id = data.get('id') as string
     await deleteEmployee(id, event.fetch)
 
-  }
+  },
+
 
 } satisfies Actions
