@@ -2,8 +2,20 @@ import { API_URL, INTERNAL_API_KEY } from "$env/static/private"
 import { error } from '@sveltejs/kit'
 import type { Employee } from "./types"
 
-export async function fetchDepartments() {
-  const res = await fetch(`${API_URL}/department`, {
+export async function fetchDepartments(fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/departments`, {
+    headers: {
+      'internal-api-key': INTERNAL_API_KEY
+    },
+    credentials: 'include'
+  })
+  if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
+  return await res.json()
+
+}
+
+export async function fetchDepartment(id: string, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/departments/${id}`, {
     headers: {
       'internal-api-key': INTERNAL_API_KEY
     }
@@ -13,40 +25,31 @@ export async function fetchDepartments() {
 
 }
 
-export async function fetchDepartment(id: string) {
-  const res = await fetch(`${API_URL}/department/${id}`, {
+export async function fetchEmployee(id: string, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/employees/${id}`, {
     headers: {
       'internal-api-key': INTERNAL_API_KEY
-    }
-  })
-  if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
-  return await res.json()
-
-}
-
-export async function fetchEmployee(id: string) {
-  const res = await fetch(`${API_URL}/employee/${id}`, {
-    headers: {
-      'internal-api-key': INTERNAL_API_KEY
-    }
+    },
+    credentials: 'include'
   })
   if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
   return await res.json()
 }
 
-export async function fetchEmployees() {
-  const res = await fetch(`${API_URL}/employee`, {
+export async function fetchEmployees(fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/employees`, {
     headers: {
       'internal-api-key': INTERNAL_API_KEY,
     },
+    credentials: 'include'
   })
   if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
   const data = await res.json()
   return data.employees
 }
 
-export async function createDepartment(departmentName: string): Promise<Response> {
-  const res = await fetch(`${API_URL}/department`, {
+export async function createDepartment(departmentName: string, fetch: typeof globalThis.fetch): Promise<Response> {
+  const res = await fetch(`${API_URL}/departments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -57,8 +60,8 @@ export async function createDepartment(departmentName: string): Promise<Response
   return res
 }
 
-export async function updateDepartment(oldName: string, newName: string) {
-  const res = await fetch(`${API_URL}/department`, {
+export async function updateDepartment(oldName: string, newName: string, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/departments`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -70,8 +73,8 @@ export async function updateDepartment(oldName: string, newName: string) {
 
 }
 
-export async function deleteDepartment(name: string) {
-  const res = await fetch(`${API_URL}/department`, {
+export async function deleteDepartment(name: string, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/departments`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -83,8 +86,8 @@ export async function deleteDepartment(name: string) {
   return true
 }
 
-export async function addEmployee(employee: Employee) {
-  const res = await fetch(`${API_URL}/employee`, {
+export async function addEmployee(employee: Employee, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/employees`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -94,8 +97,8 @@ export async function addEmployee(employee: Employee) {
   })
   return res
 }
-export async function updateEmployee(id: string, employee: Employee) {
-  const res = await fetch(`${API_URL}/employee`, {
+export async function updateEmployee(id: string, employee: Employee, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/employees`, {
     method: "PUT",
     headers: {
       'Content-Type': 'application/json',
@@ -106,8 +109,8 @@ export async function updateEmployee(id: string, employee: Employee) {
   return res
 }
 
-export async function deleteEmployee(id: string) {
-  const res = await fetch(`${API_URL}/employee`, {
+export async function deleteEmployee(id: string, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/employees`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -119,7 +122,7 @@ export async function deleteEmployee(id: string) {
   return true
 }
 
-export async function resetData() {
+export async function resetData(fetch: typeof globalThis.fetch) {
   const res = await fetch(`${API_URL}/reset-data`, {
     method: 'POST',
     headers: {

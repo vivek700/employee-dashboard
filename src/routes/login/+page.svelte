@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { ArrowRight, AtSign, KeyRound } from 'lucide-svelte';
+	import { ArrowRight, AtSign, CircleUser, KeyRound, User, VenetianMask } from 'lucide-svelte';
 	import { enhance } from '$app/forms';
-	import type { PageProps } from './$types';
-	let { form }: PageProps = $props();
+	import { authClient } from '$lib/auth-client';
 </script>
 
 <main class=" flex h-dvh w-full flex-col items-center justify-center">
@@ -11,7 +10,12 @@
 			<h1 class="font-serif text-xl md:text-3xl">Apollonia Dental Practice</h1>
 		</header>
 		<section class="mt-4" aria-labelledby="login-heading">
-			<form method="POST" use:enhance class=" rounded-md bg-[#2B4958] px-8 pt-8 pb-10">
+			<form
+				method="POST"
+				action="?/login"
+				use:enhance
+				class=" rounded-md bg-[#2B4958] px-8 pt-8 pb-10"
+			>
 				<h2 id="login-heading" class="pb-3 font-serif md:text-2xl">Please log in to continue.</h2>
 				<!-- <div> -->
 				<!-- 	<label for="email">Email</label> -->
@@ -53,6 +57,11 @@
 				<!-- 	<ArrowRight class="ml-auto h-5 w-5 text-gray-50" /> -->
 				<!-- </button> -->
 				<button
+					onclick={async () => {
+						await authClient.signIn.social({
+							provider: 'google'
+						});
+					}}
 					class="mt-5 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
 					type="button"
 				>
@@ -86,13 +95,13 @@
 					</svg>
 					Sign in with Google</button
 				>
-				<!-- <button -->
-				<!-- 	onclick={async () => { -->
-				<!-- 		await authClient.signOut(); -->
-				<!-- 	}} -->
-				<!-- 	class="mt-5 flex h-10 w-full cursor-pointer items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50" -->
-				<!-- 	type="button">Sign Out</button -->
-				<!-- > -->
+				<p class="py-4 text-center">or</p>
+				<button
+					class="mt-1 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+				>
+					<CircleUser size={18} />
+					<span> As a guest </span>
+				</button>
 			</form>
 		</section>
 	</div>

@@ -1,19 +1,18 @@
+import { auth } from '$lib/auth'
 import type { Actions } from './$types'
 
 
 export const actions = {
-  login: async ({ request }) => {
-    const data = await request.formData()
-    const email = data.get('email')
-    const password = data.get('password')
-
-    console.log(email, password)
+  login: async () => {
+    console.log("This a guest login action")
+    const user = await auth.api.signInAnonymous()
+    console.log(user)
     return {
       success: true
     }
   },
   signout: async (event) => {
 
-    console.log("signout action")
+    console.log("SignOut action")
   }
 } satisfies Actions

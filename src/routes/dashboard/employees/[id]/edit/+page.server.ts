@@ -4,11 +4,11 @@ import { error, fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, fetch }) => {
   const id = params.id as string
   return {
-    departments: fetchDepartments(),
-    employee: fetchEmployee(id)
+    departments: fetchDepartments(fetch),
+    employee: fetchEmployee(id, fetch)
   }
 }
 
@@ -25,7 +25,7 @@ export const actions = {
       departments: departments
 
     }
-    const res = await updateEmployee(id, employee)
+    const res = await updateEmployee(id, employee, event.fetch)
     if (res.status === 409) {
       const message = "Employee already exists."
       return fail(409, { message, incorrect: true })

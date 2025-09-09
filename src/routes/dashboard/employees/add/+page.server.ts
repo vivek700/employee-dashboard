@@ -4,14 +4,14 @@ import { addEmployee, fetchDepartments } from "$lib/data"
 import type { Employee } from "$lib/types"
 
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ fetch }) => {
   return {
-    departments: fetchDepartments()
+    departments: fetchDepartments(fetch)
   }
 }
 
 export const actions = {
-  add: async ({ request }) => {
+  add: async ({ request, fetch }) => {
     const data = await request.formData()
     const departments = data.getAll('departments') as string[]
     const employee: Employee = {
@@ -22,7 +22,7 @@ export const actions = {
       departments: departments
 
     }
-    const res = await addEmployee(employee)
+    const res = await addEmployee(employee, fetch)
     if (res.status === 409) {
       const message = "Employee already exists."
       return fail(409, { message, incorrect: true })

@@ -2,10 +2,10 @@ import { fetchDepartment, updateDepartment } from "$lib/data";
 import { error, fail, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, fetch }) => {
   const id = params.id as string
   return {
-    department: fetchDepartment(id)
+    department: fetchDepartment(id, fetch)
   }
 
 }
@@ -15,7 +15,7 @@ export const actions = {
     const data = await event.request.formData()
     const oldName = data.get('oldname') as string
     const name = data.get('department') as string
-    const res = await updateDepartment(oldName, name)
+    const res = await updateDepartment(oldName, name, event.fetch)
     if (res.status === 409) {
       const message = "Department already exists."
       return fail(409, { name, message, incorrect: true })

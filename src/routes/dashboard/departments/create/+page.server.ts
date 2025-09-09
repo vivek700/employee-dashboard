@@ -5,7 +5,7 @@ export const actions = {
   create: async (event) => {
     const data = await event.request.formData()
     const name = data.get('department') as string
-    const res = await createDepartment(name)
+    const res = await createDepartment(name, event.fetch)
     if (res.status === 409) {
       const message = "Department already exists."
       return fail(409, { name, message, incorrect: true })
