@@ -37,7 +37,7 @@
 			</a>
 		</li>
 		<li class="flex flex-1 md:hidden">
-			<form method="POST" action="?/signOut" class=" w-full" use:enhance>
+			<form method="POST" action="/dashboard?/signOut"  class=" w-full" use:enhance>
 				<button
 					class="flex h-full w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-slate-700 p-2.5 text-sm hover:bg-slate-900"
 				>

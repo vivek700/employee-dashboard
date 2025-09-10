@@ -6,7 +6,7 @@ import type { Actions } from './$types'
 export const actions = {
   signIn: async () => {
     try {
-      const user = await auth.api.signInAnonymous()
+      await auth.api.signInAnonymous()
     } catch (err) {
       console.log(err)
     } finally {

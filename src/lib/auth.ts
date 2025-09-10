@@ -23,6 +23,7 @@ export const auth = betterAuth({
       emailDomainName: "example.com"
     }),
     sveltekitCookies(getRequestEvent)
-  ]
+  ],
+
 
 })
