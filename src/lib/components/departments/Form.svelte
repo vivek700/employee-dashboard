@@ -20,7 +20,6 @@
 	>
 		<div class="p-4 md:ml-5 md:p-8">
 			<label for="department" class="text-xl">Department Name: </label>
-			<input type="hidden" name="oldname" {value} />
 			<input
 				onclick={() => {
 					form = null;

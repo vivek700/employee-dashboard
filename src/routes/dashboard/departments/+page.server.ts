@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 export const actions = {
   delete: async ({ request, fetch }) => {
     const data = await request.formData()
-    const departmentName = data.get('departmentName') as string
-    await deleteDepartment(departmentName, fetch)
+    const id = data.get('id') as string
+    await deleteDepartment(id, fetch)
   }
 } satisfies Actions

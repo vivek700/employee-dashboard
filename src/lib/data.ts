@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit'
 import type { Employee } from "./types"
 
 export async function fetchDepartments(fetch: typeof globalThis.fetch) {
+  // await new Promise(resolve => setTimeout(resolve, 3000))
   const res = await fetch(`${API_URL}/departments`, {
     headers: {
       'internal-api-key': INTERNAL_API_KEY
@@ -60,27 +61,27 @@ export async function createDepartment(departmentName: string, fetch: typeof glo
   return res
 }
 
-export async function updateDepartment(oldName: string, newName: string, fetch: typeof globalThis.fetch) {
+export async function updateDepartment(id: string, newName: string, fetch: typeof globalThis.fetch) {
   const res = await fetch(`${API_URL}/departments`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'internal-api-key': INTERNAL_API_KEY,
     },
-    body: JSON.stringify({ oldName: oldName, newName: newName })
+    body: JSON.stringify({ id, newName })
   })
   return res
 
 }
 
-export async function deleteDepartment(name: string, fetch: typeof globalThis.fetch) {
+export async function deleteDepartment(id: string, fetch: typeof globalThis.fetch) {
   const res = await fetch(`${API_URL}/departments`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'internal-api-key': INTERNAL_API_KEY,
     },
-    body: JSON.stringify({ name: name })
+    body: JSON.stringify({ id })
   })
   if (!res.ok) error(res.status, { message: res.statusText || 'Request failed' })
   return true

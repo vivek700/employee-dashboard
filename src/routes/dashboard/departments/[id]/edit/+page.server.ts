@@ -12,10 +12,10 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 
 export const actions = {
   update: async (event) => {
+    const id = event.params.id
     const data = await event.request.formData()
-    const oldName = data.get('oldname') as string
     const name = data.get('department') as string
-    const res = await updateDepartment(oldName, name, event.fetch)
+    const res = await updateDepartment(id, name, event.fetch)
     if (res.status === 409) {
       const message = "Department already exists."
       return fail(409, { name, message, incorrect: true })

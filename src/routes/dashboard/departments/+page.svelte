@@ -31,7 +31,7 @@
 							>
 								<Pencil size={15} />
 							</a>
-							<input type="hidden" name="departmentName" value={department?.name} />
+							<input type="hidden" name="id" value={department?._id} />
 							<button
 								type="submit"
 								aria-label="Delete"
