@@ -6,17 +6,23 @@
 	import { LoaderCircle } from 'lucide-svelte';
 	let { data }: PageProps = $props();
 	import { enhance } from '$app/forms';
+	import { authClient } from '$lib/auth-client';
+	const session = authClient.useSession();
+	$inspect(data);
 </script>
 
 <div class="flex-1">
 	<section class="mx-auto w-11/12 py-7">
 		<div class="flex items-center justify-between">
 			<h1 class="font-serif text-xl md:text-3xl">Dashboard</h1>
-			<form action="?/reset" method="POST" use:enhance>
-				<button class=" cursor-pointer rounded-md bg-slate-700 px-2 py-1 text-xs" title="Reset data"
-					>Reset</button
-				>
-			</form>
+			{#if $session?.data?.user.isAnonymous}
+				<form action="?/reset" method="POST" use:enhance>
+					<button
+						class=" cursor-pointer rounded-md bg-slate-700 px-2 py-1 text-xs"
+						title="Reset data">Reset</button
+					>
+				</form>
+			{/if}
 		</div>
 		<div class="flex justify-between gap-4 pt-4 md:gap-10">
 			{#await Promise.all([data.employees, data.departments])}
