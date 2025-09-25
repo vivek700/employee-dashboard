@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { ArrowRight, AtSign, CircleUser, KeyRound, User, VenetianMask } from 'lucide-svelte';
+	import { CircleUser, Loader2, LoaderCircle } from 'lucide-svelte';
 	import { enhance } from '$app/forms';
 	import { authClient } from '$lib/auth-client';
+	let isDisabled = $state(false);
 </script>
 
 <main class=" flex h-dvh w-full flex-col items-center justify-center">
@@ -13,7 +14,13 @@
 			<form
 				method="POST"
 				action="?/signIn"
-				use:enhance
+				use:enhance={() => {
+					isDisabled = true;
+					return async ({ update }) => {
+						await update();
+						isDisabled = false;
+					};
+				}}
 				class=" rounded-md bg-[#2B4958] px-8 pt-8 pb-10"
 			>
 				<h2 id="login-heading" class="pb-3 font-serif md:text-2xl">Please log in to continue.</h2>
@@ -62,8 +69,8 @@
 							provider: 'google'
 						});
 					}}
-					class="mt-5 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
 					type="button"
+					class="mt-5 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
 				>
 					<svg
 						class="h-4 w-4"
@@ -97,10 +104,17 @@
 				>
 				<p class="py-4 text-center">or</p>
 				<button
+					disabled={isDisabled}
+					class:cursor-not-allowed={isDisabled}
+					class:cursor-pointer={!isDisabled}
 					class="mt-1 flex h-10 w-full cursor-pointer items-center justify-center gap-x-1 rounded-full bg-slate-900 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
 				>
-					<CircleUser size={18} />
-					<span> As a guest </span>
+					{#if isDisabled}
+						<LoaderCircle class="animate-spin" />
+					{:else}
+						<CircleUser size={18} />
+						<span> As a guest </span>
+					{/if}
 				</button>
 			</form>
 		</section>

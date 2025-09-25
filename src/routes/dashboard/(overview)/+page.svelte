@@ -8,7 +8,6 @@
 	import { enhance } from '$app/forms';
 	import { authClient } from '$lib/auth-client';
 	const session = authClient.useSession();
-	$inspect(data);
 </script>
 
 <div class="flex-1">

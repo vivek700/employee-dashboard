@@ -19,11 +19,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   }
   if (event.url.pathname === "/") {
-    throw redirect(303, "/dashboard")
-
-  }
-  if (event.locals.user && event.url.pathname.startsWith("/login")) {
-    throw redirect(303, "/dashboard")
+    throw redirect(303, "/login")
 
   }
   if (!event.locals.user && event.url.pathname.startsWith("/dashboard")) {

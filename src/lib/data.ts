@@ -1,7 +1,19 @@
 import { API_URL, INTERNAL_API_KEY } from "$env/static/private"
 import { error } from '@sveltejs/kit'
-import type { Employee } from "./types"
+import type { Employee, User } from "./types"
 
+
+export async function handshake(user: User, fetch: typeof globalThis.fetch) {
+  const res = await fetch(`${API_URL}/auth/handshake`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'internal-api-key': INTERNAL_API_KEY,
+    },
+    body: JSON.stringify(user)
+  })
+  return res
+}
 export async function fetchDepartments(fetch: typeof globalThis.fetch) {
   // await new Promise(resolve => setTimeout(resolve, 3000))
   const res = await fetch(`${API_URL}/departments`, {
