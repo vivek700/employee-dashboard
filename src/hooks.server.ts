@@ -13,7 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (session) {
     event.locals.session = session.session
     event.locals.user = session.user
-    event.cookies.set("better-auth-user", event.locals.user.id, { path: '/', httpOnly: true, maxAge: 60 * 60 * 24 * 7, secure: true, sameSite: 'none' })
+    event.cookies.set("better-auth-user", event.locals.user.id, { path: '/', httpOnly: true, maxAge: 60 * 60 * 24 * 7, secure: true })
   }
 
   if (!event.locals.user) {
